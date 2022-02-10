@@ -18,7 +18,7 @@
 </template>
 <script setup>
 import { ref, computed, watchEffect } from 'vue'
-import useStorage from '../utils/useStorage'
+import useStorage from '../utils/useStorage.js'
 let title = ref('')
 // let todos = ref([
 //     {
@@ -34,12 +34,18 @@ let todoArr = [
         done: false
     }
 ]
-// let todos = ref(JSON.parse(localStorage.getItem('todo') || JSON.stringify(todoArr)))
-// console.log('todos', todos)
-// watchEffect(() => { localStorage.setItem('todos', JSON.stringify(todos.value)) }
-// )
+let todos = ref(JSON.parse(localStorage.getItem('todos') || JSON.stringify(todoArr)))
+console.log('todos', todos)
+watchEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos.value))
+}
+)
+// let todos = ref(JSON.parse(localStorage.getItem('todos') || '[]'))
+// watchEffect(() => {
+//     localStorage.setItem('todos', JSON.stringify(todos.value))
+// })
 
-let todos = useStorage('todos', '[]')
+// let todos = useStorage('todos', '[]')
 
 
 let active = computed(() => {
