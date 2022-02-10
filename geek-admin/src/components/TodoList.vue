@@ -17,14 +17,31 @@
     </div>
 </template>
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watchEffect } from 'vue'
+import useStorage from '../utils/useStorage'
 let title = ref('')
-let todos = ref([
+// let todos = ref([
+//     {
+//         title: '学习Vue',
+//         done: false
+//     }
+// ])
+// todo 刷新后本地存储和todolist同步
+console.log('111', localStorage.getItem('todo'))
+let todoArr = [
     {
-        title: '学习Vue',
+        title: 'xxxx',
         done: false
     }
-])
+]
+// let todos = ref(JSON.parse(localStorage.getItem('todo') || JSON.stringify(todoArr)))
+// console.log('todos', todos)
+// watchEffect(() => { localStorage.setItem('todos', JSON.stringify(todos.value)) }
+// )
+
+let todos = useStorage('todos', '[]')
+
+
 let active = computed(() => {
     return todos.value.filter(v => v.done).length
 })
@@ -47,6 +64,7 @@ function addTodo() {
     title.value = ''
 }
 function clear() {
+    console.log(333)
     todos.value = todos.value.filter(v => !v.done)
 }
 </script>
