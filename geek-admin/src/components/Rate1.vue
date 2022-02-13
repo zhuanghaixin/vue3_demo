@@ -4,14 +4,14 @@
         <div class="rate" @mouseout="mouseOut">
             <span @mouseover="mouseOver(num)" v-for="num in 5" :key="num">☆</span>
             <span class="hollow" :style="fontwidth">
-                <span @mouseover="mouseOver(num)" v-for="num in 5" :key="num">★</span>
+                <span @click="onRate(num)" v-for="num in 5" @mouseover="mouseOver(num)" :key="num">★</span>
             </span>
         </div>
     </div>
 </template>
 
 <script setup>
-import { defineProps, computed, ref } from 'vue';
+import { defineProps, computed, ref, defineEmits } from 'vue';
 let props = defineProps({
     value: Number,
     theme: {
@@ -46,6 +46,12 @@ let fontStyle = computed(() => {
     return `color:${themeObj[props.theme]}`
 })
 const fontwidth = computed(() => `width:${width.value}em;`)
+
+// 定义发射的数据
+let emits = defineEmits('update-rate')
+function onRate(num) {
+    emits('update-rate', num)
+}
 </script>
 <style scoped>
 .rate {
