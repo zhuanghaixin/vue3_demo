@@ -12,14 +12,20 @@
 
 <script setup>
 import { defineProps, computed, ref, defineEmits } from 'vue';
+// let props = defineProps({
+//     value: Number,
+//     theme: {
+//         type: String,
+//         default: 'orange'
+//     }
+// })
+// v-model
 let props = defineProps({
-    value: Number,
-    theme: {
-        type: String,
-        default: 'orange'
-    }
+    modelValue: Number,
+    theme: { type: String, default: 'orange' }
 })
-let width = ref(props.value);
+// let width = ref(props.value);
+let width = ref(props.modelValue)
 function mouseOver(i) {
     console.log('mouseOVer')
     console.log(i)
@@ -28,9 +34,10 @@ function mouseOver(i) {
 }
 function mouseOut() {
 
-    width.value = props.value
-    console.log('width.value', width.value)
-    console.log('props.value', props.value)
+    // width.value = props.value
+    // console.log('width.value', width.value)
+    // console.log('props.value', props.value)
+    width.value = props.modelValue
 }
 const themeObj = {
     'black': '#00',
@@ -45,12 +52,14 @@ let fontStyle = computed(() => {
 
     return `color:${themeObj[props.theme]}`
 })
+// const fontwidth = computed(() => `width:${width.value}em;`)
 const fontwidth = computed(() => `width:${width.value}em;`)
 
 // 定义发射的数据
-let emits = defineEmits('update-rate')
+// let emits = defineEmits('update-rate')
+let emits = defineEmits(['update:modelValue'])
 function onRate(num) {
-    emits('update-rate', num)
+    emits('update:modelValue', num)
 }
 </script>
 <style scoped>
