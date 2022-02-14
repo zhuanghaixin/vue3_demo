@@ -1,4 +1,5 @@
-import { createStore } from 'vuex'
+// import { createStore } from 'vuex'
+import { createStore } from './gvuex'
 // 创建一个数据存储
 const store = createStore({
   state () {
