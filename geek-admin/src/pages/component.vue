@@ -6,7 +6,8 @@
     <Rate1 :value="3.5"></Rate1>
     <h1>你的评分是{{ score }}</h1>
     <!-- <Rate1 :value="score" @update-rate="update"></Rate1> -->
-    <Rate1 v-model="score"></Rate1>
+    <Rate1 v-model="score"></Rate1>================================================
+    <Rate1 v-model="score">星级组件</Rate1>
 </template>
 
 <script setup>
