@@ -42,8 +42,8 @@ let x = computed(() => {
     console.log('v', videoRatio)
     let screenRatio = w2.value / h2.value
     console.log('s', screenRatio)
-    let x; //实际在设备显示的宽度
-    let y; //实际在设备显示高度
+    let x = null; //实际在设备显示的宽度
+    let y = null; //实际在设备显示高度
     if (videoRatio == screenRatio) {
         x = w2.value
         y = h2.value
@@ -56,7 +56,8 @@ let x = computed(() => {
         x = w.value * h2.value / h.value
         y = h2.value
     }
-    return x ? x.toFixed(2) : x
+
+    return Number(x).toFixed(2)
 })
 
 let y = computed(() => {
@@ -68,8 +69,8 @@ let y = computed(() => {
     console.log('v', videoRatio)
     let screenRatio = w2.value / h2.value
     console.log('s', screenRatio)
-    let x; //实际在设备显示的宽度
-    let y; //实际在设备显示高度
+    let x = null; //实际在设备显示的宽度
+    let y = null; //实际在设备显示高度
     if (videoRatio == screenRatio) {
         x = w2.value
         y = h2.value
@@ -82,7 +83,8 @@ let y = computed(() => {
         x = w.value * h2.value / h.value
         y = h2.value
     }
-    return y ? y.toFixed(2) : y
+
+    return Number(y).toFixed(2)
 })
 
 console.log('x', x, 'y', y)
