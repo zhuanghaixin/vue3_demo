@@ -33,7 +33,7 @@ import { ref, reactive, computed } from 'vue'
 import Video from './components/Video.vue'
 import Box from './components/Box.vue'
 let width = ref(100)
-let height = ref(50)
+let height = ref(60)
 let color = ref('red')
 
 let width2 = ref(200)
